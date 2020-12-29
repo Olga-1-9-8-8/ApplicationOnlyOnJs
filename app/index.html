@@ -4,11 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Reviews</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="https://kit.fontawesome.com/76619c72e4.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>   Привет ! 33</h1>
+    <div class="container-reviews">
+
+        <section class="product-card">
+
+            <div class="product-card__title">OOO Prof/Белая Сумка</div>   
+
+            <div class="product-card__picture">
+                <a href="#" class="product-card__picture-wrapper">
+                    <img src="img/picture-product.jpg" alt="picture-product">
+                </a>
+            </div> 
+
+            <div class="product-card__stars">
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>   
+
+            <div class="card__counter-reviews">
+                <span class ="card__counter-result">0</span>
+                <span>Отзывов</span>  
+            </div>
+
+        </section>
+
+
+        <section class="reviews">
+
+            <div class="reviews__panel">
+                <div class="reviews__title">Отзывы и вопросы</div>
+                <div class="review__wrapper-button">
+                    <button class="reviews__button">Написать Отзыв</button>
+                </div>
+                <div class="reviews__form-wrapper" hidden> 
+                    <form class="reviews__form">
+                        <legend>Новый отзыв</legend>
+                        <div class="reviews__form-float-label">
+                          <input class="reviews__input" type="text" required>
+                          <label>Назови свое имя</label>
+                        </div>
+                        <div class="reviews__form-float-label">
+                          <input class= "reviews__input" type="text" required>
+                          <label>Напиши Фамилию</label>
+                        </div>
+
+                        <div class="reviews__rating-area">
+                            <input type="radio" id="star-5" name="rating" value="5">
+                            <label for="star-5"></label>	
+                            <input type="radio" id="star-4" name="rating" value="4">
+                            <label for="star-4"></label>    
+                            <input type="radio" id="star-3" name="rating" value="3">
+                            <label for="star-3"></label>  
+                            <input type="radio" id="star-2" name="rating" value="2">
+                            <label for="star-2"></label>    
+                            <input type="radio" id="star-1" name="rating" value="1">
+                            <label for="star-1"></label>                           
+                        </div>    
+                        <canvas class ="reviews__rating-canvas" id ="canvas" width="500" height="220"></canvas>
+
+
+                        <div class="reviews__textarea">
+                          <label>Отзыв</label>
+                          <textarea cols="80"></textarea>
+                        </div>
+
+                        <button type="submit" class="reviews__button-submit">Отправить</button>
+                        <button type="reset" class="reviews__button-submit">Отмена</button>
+                      </form> 
+                </div>    
+                
+
+
+                <div class="reviews__sort">
+                    <span>Сортировать по:</span>
+                    <span>Дате</span>
+                    <span>Оценке</span>
+                </div>
+                
+            </div>
+            
+            <div class="reviews__list"></div>
+
+        </section>
+    </div>
 
     <script src="js/libs.min.js"></script>
     <script src="js/common.js"></script>
