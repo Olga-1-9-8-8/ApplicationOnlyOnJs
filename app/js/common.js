@@ -1,4 +1,4 @@
-/*window.onload = function(){
+window.onload = function(){
     let canvas = document.getElementById('canvas');
     if(canvas){
         let context = canvas.getContext('2d');
@@ -21,7 +21,9 @@
         context.stroke();
     }  
 }
-*/
+
+
+
 
 
 const imageProductCard = document.querySelector('.product-card__image')
@@ -50,19 +52,19 @@ function zoomImage(img){
 
 
 
-//bindButtonReview();
+bindButtonReview();
 
 
 
 
-/*
+
 function bindButtonReview(){
     let buttonReview = document.querySelector('.reviews__button');
     let newReview = document.querySelector('.reviews__form-wrapper');
     buttonReview.addEventListener('click',() =>
-    newReview.hidden = !newReview.hidden;
+    newReview.hidden = !newReview.hidden
     )
 }
 
-*/
+
 
