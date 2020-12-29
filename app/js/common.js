@@ -1,7 +1,7 @@
 /*window.onload = function(){
-    let canvas = document.getElementById("canvas");
+    let canvas = document.getElementById('canvas');
     if(canvas){
-        let context = canvas.getContext("2d");
+        let context = canvas.getContext('2d');
         context.fillStyle = "rgba(33, 150, 243,0.8)";
         context.strokeStyle = "rgba(33, 150, 243,0.8)";
         context.lineWidth = 5;
@@ -24,6 +24,32 @@
 */
 
 
+const imageProductCard = document.querySelector('.product-card__image')
+
+zoomImage(imageProductCard);
+
+
+
+
+
+
+function zoomImage(img){
+    img.addEventListener('mousemove',function(e){
+        // find size of the image
+        let width = img.offsetWidth;
+        let height = img.offsetHeight;
+        // find mouse-coords relative to block(product-card__image)
+        let mouseX = e.offsetX;
+        let mouseY = e.offsetY;
+        console.log(mouseX,mouseY)
+    })
+}
+
+
+
+
+
+
 //bindButtonReview();
 
 
@@ -31,10 +57,10 @@
 
 /*
 function bindButtonReview(){
-    let buttonReview = document.querySelector(".reviews__button");
-    let newReview = document.querySelector(".reviews__form-wrapper");
+    let buttonReview = document.querySelector('.reviews__button');
+    let newReview = document.querySelector('.reviews__form-wrapper');
     buttonReview.addEventListener('click',() =>
-    newReview.setAttribute('hidden',"false")
+    newReview.hidden = !newReview.hidden;
     )
 }
 
