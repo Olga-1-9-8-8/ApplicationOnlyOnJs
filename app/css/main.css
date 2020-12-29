@@ -321,3 +321,57 @@ textarea {
   padding: 0.2em 0; }
 
 /* =====================MAIN PAGE================================== */
+html{
+  height: 100%;
+}
+
+body{
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+img{
+  position:absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+}
+
+.container-reviews{
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 4fr;
+}
+
+.product-card{
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #cb11ab;
+}
+
+
+.product-card__title{
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 15px;
+}
+
+.product-card__picture{
+  display: flex;
+  justify-content: center;
+  height: 200px;
+}
+
+
+
+
+
+.product-card__picture-wrapper{
+  position: relative;
+  display: block;
+  width: 200px;
+}
