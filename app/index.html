@@ -44,16 +44,16 @@
                 <div class="review__wrapper-button">
                     <button class="reviews__button">Написать Отзыв</button>
                 </div>
-                <div class="reviews__form-wrapper" hidden> 
-                    <form class="reviews__form">
+                <div class="reviews__form-wrapper" > 
+                    <form class="reviews__form" name="review">
                         <legend>Новый отзыв</legend>
                         <div class="reviews__form-float-label">
-                          <input class="reviews__input" type="text" required>
-                          <label>Назови свое имя</label>
+                          <input class="reviews__input" name ="input" type="text" required>
+                          <label name = "label">Назови свое имя</label>
                         </div>
                         <div class="reviews__form-float-label">
-                          <input class= "reviews__input" type="text" required>
-                          <label>Напиши Фамилию</label>
+                          <input class= "reviews__input" name ="input" type="text" required>
+                          <label name = "label">Напиши Фамилию</label>
                         </div>
 
                         <div class="reviews__rating-area">
@@ -68,7 +68,11 @@
                             <input type="radio" id="star-1" name="rating" value="1">
                             <label for="star-1"></label>                           
                         </div>    
-                        <canvas class ="reviews__rating-canvas" id ="canvas" width="500" height="220"></canvas>
+                        
+                        <div class="reviews__rating-canvas"> 
+                            <canvas class ="canvas" id ="canvas" width="500" height="220"></canvas>
+                        </div>
+                       
 
 
                         <div class="reviews__textarea">
