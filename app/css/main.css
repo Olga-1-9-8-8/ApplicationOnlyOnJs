@@ -345,7 +345,7 @@ img{
 .container-reviews{
   display: grid;
   height: 100%;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1.3fr 4fr;
 }
 
 .product-card{
@@ -365,14 +365,13 @@ img{
 .product-card__picture{
   display: flex;
   justify-content: center;
-  height: 200px;
+  height: 350px;
 }
 
 .product-card__picture-wrapper{
   position: relative;
   display: block;
-  width: 180px;
-  max-width: 200px;;
+  width: 300px;
 }
 
 .product-card__image{
@@ -437,3 +436,5 @@ img{
   color: purple;
   font-weight: bold;
 }
+
+.

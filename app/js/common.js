@@ -1,3 +1,48 @@
+const imageProductCard = document.querySelector('.product-card__image')
+
+zoomImage(imageProductCard);
+
+
+bindButtonReview();
+
+
+
+function zoomImage(img){
+  
+    img.addEventListener('mousemove',function(e){
+        // find size of the image
+        let width = img.offsetWidth;
+        let height = img.offsetHeight;
+        // find mouse-coords relative to block(product-card__image)
+        let mouseX = e.offsetX;
+        let mouseY = e.offsetY;
+        //find mouse-coords in % relative to block
+        // number/total *100 = %
+        let positionX = (mouseX/width * 100);
+        let positionY = (mouseY/height * 100);
+        imageProductCard.style.backgroundPosition = `${positionX}% ${positionY}%`
+    })
+    img.addEventListener('mouseleave',function(){
+        img.style.backgroundPosition = 'center';
+    })
+}
+
+
+function bindButtonReview(){
+    let buttonReview = document.querySelector('.reviews__button');
+    let newReview = document.querySelector('.reviews__form-wrapper');
+    buttonReview.addEventListener('click',function(){
+    newReview.hidden = !newReview.hidden;
+    if(buttonReview.innerHTML =='Написать Отзыв'){
+        buttonReview.innerHTML = "Закрыть Отзыв"
+    } else {
+        buttonReview.innerHTML = "Написать Отзыв"
+    }
+    })
+}
+
+
+
 window.onload = function(){
     let canvas = document.getElementById('canvas');
     if(canvas){
@@ -21,50 +66,3 @@ window.onload = function(){
         context.stroke();
     }  
 }
-
-
-
-
-
-const imageProductCard = document.querySelector('.product-card__image')
-
-zoomImage(imageProductCard);
-
-
-
-
-
-
-function zoomImage(img){
-    img.addEventListener('mousemove',function(e){
-        // find size of the image
-        let width = img.offsetWidth;
-        let height = img.offsetHeight;
-        // find mouse-coords relative to block(product-card__image)
-        let mouseX = e.offsetX;
-        let mouseY = e.offsetY;
-        console.log(mouseX,mouseY)
-    })
-}
-
-
-
-
-
-
-bindButtonReview();
-
-
-
-
-
-function bindButtonReview(){
-    let buttonReview = document.querySelector('.reviews__button');
-    let newReview = document.querySelector('.reviews__form-wrapper');
-    buttonReview.addEventListener('click',() =>
-    newReview.hidden = !newReview.hidden
-    )
-}
-
-
-
