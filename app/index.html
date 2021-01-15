@@ -51,33 +51,31 @@
                           <input class= "reviews__input" name ="input" type="text" required>
                           <label name = "label">Напиши Фамилию</label>
                         </div>
-
-                        <div class="reviews__rating-area">
-                            <input type="radio" id="star-5" name="rating" value="5">
-                            <label for="star-5"></label>	
-                            <input type="radio" id="star-4" name="rating" value="4">
-                            <label for="star-4"></label>    
-                            <input type="radio" id="star-3" name="rating" value="3">
-                            <label for="star-3"></label>  
-                            <input type="radio" id="star-2" name="rating" value="2">
-                            <label for="star-2"></label>    
-                            <input type="radio" id="star-1" name="rating" value="1">
-                            <label for="star-1"></label>                           
-                        </div>    
-                        
-                        <div class="reviews__rating-canvas"> 
-                            <canvas class ="canvas" id ="canvas" width="500" height="220"></canvas>
+                        <div class="reviews__rating-widget">
+                            <div class="reviews__rating-area">
+                                <input type="radio" id="star-5" name="rating" value="5">
+                                <label for="star-5"></label>	
+                                <input type="radio" id="star-4" name="rating" value="4">
+                                <label for="star-4"></label>    
+                                <input type="radio" id="star-3" name="rating" value="3">
+                                <label for="star-3"></label>  
+                                <input type="radio" id="star-2" name="rating" value="2">
+                                <label for="star-2"></label>    
+                                <input type="radio" id="star-1" name="rating" value="1">
+                                <label for="star-1"></label>                           
+                            </div> 
                         </div>
+                           
                        
-
-
                         <div class="reviews__textarea">
                           <label>Отзыв</label>
                           <textarea cols="80"></textarea>
                         </div>
-
-                        <button type="submit" class="reviews__button-submit">Отправить</button>
-                        <button type="reset" class="reviews__button-submit">Отмена</button>
+                        <div class="reviews__form-buttons">
+                            <button type="submit" class=" reviews__button reviews__button-submit">Отправить</button>
+                            <button type="reset" class=" reviews__button reviews__button-submit">Отмена</button>
+                        </div>
+                        
                       </form> 
                 </div>    
                 

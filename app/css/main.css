@@ -375,7 +375,7 @@ img{
 }
 
 .product-card__image{
-  background-image: url("../img/picture-product.jpg");
+  /* background-image: url("../img/picture-product.jpg"); */
   background-size: 100%;
   height: 100%;
   background-position: center;
@@ -499,10 +499,14 @@ img{
 .reviews__input{
   display: block;
   border: none;
-  border-bottom: 2px solid #cb11ab;
+  border-bottom: 1px solid #000;
   width: 100%;
   height: 40px;
   padding-left: 5px;
+}
+
+.reviews__input:focus{
+  border-bottom: 2px solid #cb11ab;
 }
 
 .reviews__form-float-label label{
@@ -521,7 +525,10 @@ img{
   color: purple;
   font-size: 0.9rem;
 }
-
+.reviews__rating-widget{
+  height: 60px;
+  margin-bottom: 10px;
+}
 .reviews__rating-area{
   display: flex;
   position: absolute;
@@ -565,4 +572,41 @@ img{
 .reviews__rating-area label:hover ~ label::after,
 .reviews__rating-area input:checked ~ label::after{
   opacity: 1;
+}
+
+
+.reviews__textarea{
+  margin-bottom: 30px;
+}
+
+.reviews__textarea label{
+  display: block;
+  color: #101010;
+  margin-bottom: 10px;
+}
+
+
+.reviews__textarea textarea{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  display: block;
+  padding: 13px 20px 15px;
+  resize: none;
+  width: 80%;
+  height: 180px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.reviews__textarea textarea:focus{
+  border:2px solid #cb11ab;
+
+}
+
+.reviews__button-submit{
+  margin-right: 5px;
+  font-weight: bold;
+  width: 150px;
+  letter-spacing: 1.5px;
+  padding-left: 20px;
 }
