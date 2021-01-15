@@ -1,10 +1,29 @@
-const imageProductCard = document.querySelector('.product-card__image')
+const imageProductCard = findImageProductCard();
 
 zoomImage(imageProductCard);
 
 bindButtonReview();
 
 floatingLabelColorChange();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function findImageProductCard(){
+    let image = document.querySelector('.product-card__image');
+    return image;
+}
 
 function floatingLabelColorChange(){
     let form = document.forms.review;

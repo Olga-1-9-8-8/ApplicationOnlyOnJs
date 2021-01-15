@@ -387,10 +387,53 @@ img{
 }
 
 
-.product-card__stars{
+.product-card__starsOuter{
   margin: 30px auto;
-
+  position: relative;
 }
+
+.product-card__starsInner{
+  position: absolute;
+  top: 0;
+  left: 0; 
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+}
+
+.product-card__starsOuter::before{
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 200;
+  color: #101010;
+  font-size: 1.4rem;
+}
+
+.product-card__starsInner::before{
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #f8ce0b;
+  font-size: 1.4rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .card__counter-reviews{
   display: flex;
@@ -477,4 +520,49 @@ img{
   top: -15px;
   color: purple;
   font-size: 0.9rem;
+}
+
+.reviews__rating-area{
+  display: flex;
+  position: absolute;
+  transform: rotateY(180deg);
+}
+
+.reviews__rating-area input{
+  display: none;
+}
+
+.reviews__rating-area label{
+  display: block;
+  cursor: pointer;
+}
+
+.reviews__rating-area label::before{
+  content: "\f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 200;
+  color: #000;
+  font-size: 2rem;
+  position: relative;
+  display: block;
+}
+
+.reviews__rating-area label::after{
+  content: "\f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #f8ce0b;
+  font-size: 2rem;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  transition: 0.2s;
+  text-shadow: 0 2px 2px rgba(0,0,0,.5);
+}
+
+
+.reviews__rating-area label:hover::after,
+.reviews__rating-area label:hover ~ label::after,
+.reviews__rating-area input:checked ~ label::after{
+  opacity: 1;
 }
