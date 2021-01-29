@@ -6,6 +6,12 @@ bindButtonReview();
 
 floatingLabelColorChange();
 
+bindButtonFormSubmit();
+
+
+
+
+
 
 
 
@@ -21,23 +27,7 @@ floatingLabelColorChange();
 
 
 function findImageProductCard(){
-    let image = document.querySelector('.product-card__image');
-    return image;
-}
-
-function floatingLabelColorChange(){
-    let form = document.forms.review;
-    let elements = form.elements.input;
-    for(let elem of elements){
-        elem.onblur = function(){
-            if(elem.value){
-                elem.nextElementSibling.style.color = 'white';
-            }else{
-                elem.nextElementSibling.style.color = '';
-            }
-        }
-    }
-   
+    return document.querySelector('.product-card__image');
 }
 
 function zoomImage(img){
@@ -60,8 +50,22 @@ function zoomImage(img){
     })
 }
 
+function floatingLabelColorChange(){
+    let form = document.forms.review;
+    let elements = form.elements.input;
+    for(let elem of elements){
+        elem.onblur = function(){
+            if(elem.value){
+                elem.nextElementSibling.style.color = 'white';
+            }else{
+                elem.nextElementSibling.style.color = '';
+            }
+        }
+    }
+   
+}
 
-function bindButtonReview(){
+function bindButtonReview(){ 
     let buttonReview = document.querySelector('.reviews__button');
     let newReview = document.querySelector('.reviews__form-wrapper');
     buttonReview.addEventListener('click',function(){
@@ -75,5 +79,34 @@ function bindButtonReview(){
 }
 
 
+function bindButtonFormSubmit(submitFormHandler){
+    let form = document.forms.review;
+    let inputs = form.elements.input;
+    let textarea = form.elements.textarea;
+    let submit = form.elements.submit;
 
+    form.addEventListener('submit',function(event){
+        event.preventDefault();
+        const reviewObj = {
+            name: inputs[0].value,
+            surname: inputs[1].value,
+            starScore: getRating(),
+            reviewText: textarea.value
+        }
+        console.log(reviewObj)
+        
+        
+
+    })
+}  
+
+function getRating(){
+    let radios = document.getElementsByName('rating');
+    for(let radio of radios){
+        radio.onchange = function(){
+            
+        }
+    }
+ return alert('sdg');
+}
 

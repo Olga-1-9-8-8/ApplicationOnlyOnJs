@@ -40,15 +40,15 @@
                 <div class="review__wrapper-button">
                     <button class="reviews__button">Написать Отзыв</button>
                 </div>
-                <div class="reviews__form-wrapper" > 
+                <div class="reviews__form-wrapper" hidden> 
                     <form class="reviews__form" name="review">
                         <legend>Новый отзыв</legend>
                         <div class="reviews__form-float-label">
-                          <input class="reviews__input" name ="input" type="text" required>
+                          <input class="reviews__input" name ="input" type="text" required minlength="2" maxlength="30">
                           <label name = "label">Назови свое имя</label>
                         </div>
                         <div class="reviews__form-float-label">
-                          <input class= "reviews__input" name ="input" type="text" required>
+                          <input class= "reviews__input" name ="input" type="text" required minlength="2" maxlength="30">
                           <label name = "label">Напиши Фамилию</label>
                         </div>
                         <div class="reviews__rating-widget">
@@ -69,10 +69,10 @@
                        
                         <div class="reviews__textarea">
                           <label>Отзыв</label>
-                          <textarea cols="80"></textarea>
+                          <textarea cols="80" name="textarea"></textarea>
                         </div>
                         <div class="reviews__form-buttons">
-                            <button type="submit" class=" reviews__button reviews__button-submit">Отправить</button>
+                            <button type="submit" class=" reviews__button reviews__button-submit" name="submit">Отправить</button>
                             <button type="reset" class=" reviews__button reviews__button-submit">Отмена</button>
                         </div>
                         
