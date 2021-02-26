@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Reviews</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
     <script src="https://kit.fontawesome.com/76619c72e4.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -44,11 +46,11 @@
                     <form class="reviews__form" name="review">
                         <legend>Новый отзыв</legend>
                         <div class="reviews__form-float-label">
-                          <input class="reviews__input" name ="input" type="text" required minlength="2" maxlength="30">
+                          <input class="reviews__input" name ="name" type="text" required minlength="2" maxlength="30">
                           <label name = "label">Назови свое имя</label>
                         </div>
                         <div class="reviews__form-float-label">
-                          <input class= "reviews__input" name ="input" type="text" required minlength="2" maxlength="30">
+                          <input class= "reviews__input" name ="surname" type="text" required minlength="2" maxlength="30">
                           <label name = "label">Напиши Фамилию</label>
                         </div>
                         <div class="reviews__rating-widget">
@@ -61,7 +63,7 @@
                                 <label for="star-3"></label>  
                                 <input type="radio" id="star-2" name="rating" value="2">
                                 <label for="star-2"></label>    
-                                <input type="radio" id="star-1" name="rating" value="1">
+                                <input type="radio" id="star-1" name="rating" value="1" checked>
                                 <label for="star-1"></label>                           
                             </div> 
                         </div>
@@ -69,14 +71,14 @@
                        
                         <div class="reviews__textarea">
                           <label>Отзыв</label>
-                          <textarea cols="80" name="textarea"></textarea>
+                          <textarea cols="80" name="textarea" placeholder="Напиши свой отзыв здесь"></textarea>
                         </div>
                         <div class="reviews__form-buttons">
                             <button type="submit" class=" reviews__button reviews__button-submit" name="submit">Отправить</button>
                             <button type="reset" class=" reviews__button reviews__button-submit">Отмена</button>
                         </div>
                         
-                      </form> 
+                    </form> 
                 </div>    
                 
             </div>
@@ -88,10 +90,11 @@
                     <span>Оценке</span>
                 </div>
             </div>
-
+            <div class="reviews__listMessages"></div>
+            
         </section>
     </div>
-
+    <script src="firebase.js"></script>
     <script src="js/common.js"></script>
 </body>
 </html>

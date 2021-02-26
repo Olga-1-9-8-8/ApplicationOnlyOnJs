@@ -8,7 +8,7 @@ let submitFormEl = findFormSubmit(formEl);
 
 let buttonReviewEl = findButtonReviw();
 let newReviewEl = findNewReview();
-
+let listMessages = findReviewList();
 
     
 
@@ -19,8 +19,6 @@ floatingLabelColorChange(inputsFormEl);
 bindButtonReview(buttonReviewEl,newReviewEl);
 
 bindButtonFormSubmit(formEl);
-
-
 
 
 
@@ -37,7 +35,7 @@ function findForm(){
 }
 
 function findFormInputs(form){
- return form.elements.input;
+ return form.querySelectorAll('.reviews__input');
 }
 
 function findFormTextarea(form){
@@ -54,6 +52,10 @@ function findButtonReviw(){
 
 function findNewReview(){
     return document.querySelector('.reviews__form-wrapper')
+}
+
+function findReviewList(){
+    return document.querySelector('.reviews__listMessages')
 }
 
 
@@ -108,43 +110,44 @@ function bindButtonReview(buttonReview,newReview){
     })
 }
 
-
-
-
+//Отправить на Сервер отзыв
 function bindButtonFormSubmit(form){
     
     form.addEventListener('submit',async function(event){
         event.preventDefault();
-        
+        let newDate = formatDate(new Date())
+        let formData = new FormData(this);
+        formData.append('date',newDate);
         //обязательно писать после адреса до базы, название своей коллекции.json
-        let response = await fetch('https://review-app-6ea6e-default-rtdb.firebaseio.com/reviews.json',{
+        let response = await fetch('https://review-app-6ea6e-default-rtdb.firebaseio.com/listEl.json',{
             method:'POST',
-            body: JSON.stringify(Object.fromEntries(new FormData(this))),
-            headers:{
-    	        'Content-Type': 'application/json'
-            }
+            body: JSON.stringify(Object.fromEntries(formData))
         });
-
-
-        let result = await response.json();
-
+        form.reset();
+        buttonReviewEl.dispatchEvent(new Event("click"));
     })
 }  
 
-// function getRating(){
-//     let radios = document.getElementsByName('rating');
-//     for(let radio of radios){
-//         radio.onchange = function(){
-            
-//         }
-//     }
-//  return alert('sdg');
-// }
-// const reviewObj = {
-//     name: inputs[0].value,
-//     surname: inputs[1].value,
-//     starScore: getRating(),
-//     reviewText: textarea.value
-// }
-// console.log(reviewObj)
 
+
+// Форматируем время
+function formatDate(date){
+    let months =["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля","Августа","Сентября","Октября","Ноября","Декабря"];
+    let day = date.getDate();
+    let month = months[date.getMonth()];
+    let year = date.getFullYear();
+    return `${day} ${month} ${year}`
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+    

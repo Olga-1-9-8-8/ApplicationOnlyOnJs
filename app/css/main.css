@@ -610,3 +610,19 @@ img{
   letter-spacing: 1.5px;
   padding-left: 20px;
 }
+
+.reviews__listMessages{
+  margin: 20px;
+  width: 60%;
+}
+
+.reviews__listMessageTitleWrapper{
+  display: flex;
+  margin-bottom: 12px;
+}
+.reviews__listMessageTitle{
+  margin-right: 105px;
+}
+.reviews__listMessageRating{
+  margin-bottom: 15px;
+}
