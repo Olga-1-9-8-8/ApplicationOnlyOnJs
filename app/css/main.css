@@ -349,9 +349,14 @@ img{
 }
 
 .product-card{
+  border-right: 1px solid #cb11ab;
+}
+
+.product-cardWrapper{
+  position: sticky;
+  top: 0px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid #cb11ab;
 }
 
 
@@ -366,6 +371,7 @@ img{
   display: flex;
   justify-content: center;
   height: 350px;
+  margin-bottom: 30px;
 }
 
 .product-card__picture-wrapper{
@@ -388,8 +394,9 @@ img{
 
 
 .product-card__starsOuter{
-  margin: 30px auto;
+  margin: 10px auto;
   position: relative;
+  display: inline-block;  
 }
 
 .product-card__starsInner{
@@ -416,23 +423,6 @@ img{
   color: #f8ce0b;
   font-size: 1.4rem;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .card__counter-reviews{
@@ -611,18 +601,57 @@ img{
   padding-left: 20px;
 }
 
+.reviews__list{
+  margin-left: 15px;
+  display: flex;
+}
+
+.reviews__sortWrapper{
+  margin-right: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.reviews__sortData{
+  color: #cb11ab;
+  border-bottom: 1px dashed #cb11ab;
+}
+
+.reviews__sortDataArrow{
+  color: #cb11ab;
+}
+
+
+
+
+
+
+
 .reviews__listMessages{
   margin: 20px;
   width: 60%;
 }
 
+.reviews__listMessage{
+  border-bottom: 1px dashed black;
+  margin-bottom: 20px;
+}
+
 .reviews__listMessageTitleWrapper{
   display: flex;
-  margin-bottom: 12px;
+  align-items: center;
+  margin-bottom: 7px;
 }
+
 .reviews__listMessageTitle{
+  margin-left: 8px;
   margin-right: 105px;
 }
+
 .reviews__listMessageRating{
   margin-bottom: 15px;
+}
+
+.reviews__listMessageText{
+  margin: 40px 12px 15px;
 }

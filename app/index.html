@@ -14,23 +14,25 @@
     <div class="container-reviews">
 
         <section class="product-card">
+            <div class="product-cardWrapper">
+                <h2 class="product-card__title">OOO Prof/Пакет Подарочный</h2>   
 
-            <h2 class="product-card__title">OOO Prof/Пакет Подарочный</h2>   
+                <div class="product-card__picture">
+                    <a href="#" class="product-card__picture-wrapper">
+                        <div class="product-card__image"></div>  
+                    </a>
+                </div> 
 
-            <div class="product-card__picture">
-                <a href="#" class="product-card__picture-wrapper">
-                    <div class="product-card__image"></div>  
-                </a>
-            </div> 
+                <div class="product-card__starsOuter">
+                    <div class="product-card__starsInner" id="starsInner"></div>
+                </div>   
 
-            <div class="product-card__starsOuter">
-                <div class="product-card__starsInner"></div>
-            </div>   
-
-            <div class="card__counter-reviews">
-                <span class ="card__counter-result">0</span>
-                <span>Отзывов</span>  
+                <div class="card__counter-reviews">
+                    <span class ="card__counter-result">0</span>
+                    <span class="card__counter-text">Отзывов</span>  
+                </div>
             </div>
+            
 
         </section>
 
@@ -74,8 +76,8 @@
                           <textarea cols="80" name="textarea" placeholder="Напиши свой отзыв здесь"></textarea>
                         </div>
                         <div class="reviews__form-buttons">
-                            <button type="submit" class=" reviews__button reviews__button-submit" name="submit">Отправить</button>
-                            <button type="reset" class=" reviews__button reviews__button-submit">Отмена</button>
+                            <button type="submit" class="reviews__button reviews__button-submit" name="submit">Отправить</button>
+                            <button type="reset" class="reviews__button reviews__button-reset">Отмена</button>
                         </div>
                         
                     </form> 
@@ -84,11 +86,16 @@
             </div>
             
             <div class="reviews__list">
-                <div class="reviews__sort">
                     <span>Сортировать по:</span>
-                    <span>Дате</span>
-                    <span>Оценке</span>
-                </div>
+                    <div class="reviews__sortWrapper">
+                        <span class="reviews__sortData">Дате</span>
+                        <i class="fas fa-long-arrow-alt-down reviews__sortDataArrow"></i>
+                    </div>
+                    
+                    <div class="reviews__sortWrapper">
+                        <span class="reviews__sortRating">Оценке</span>
+                        <i class="fas fa-long-arrow-alt-down reviews__sortRatingArrow" style="display: none;"></i>
+                    </div>
             </div>
             <div class="reviews__listMessages"></div>
             

@@ -7,16 +7,23 @@ let textareaFormEl = findFormTextarea(formEl);
 let submitFormEl = findFormSubmit(formEl);
 
 let buttonReviewEl = findButtonReviw();
+let buttonResetEl = findButtonReset();
 let newReviewEl = findNewReview();
 let listMessages = findReviewList();
 
-    
+let ratingTotalEl = findTotalRatingEl();    
+
+
+let arrRating = [];
+let counterEl = findCounter();
+let counterTextEl = findCountText();
+let counter = 0;
 
 zoomImage(imageProductCardEl);
 
 floatingLabelColorChange(inputsFormEl);
 
-bindButtonReview(buttonReviewEl,newReviewEl);
+bindButtonReview(buttonReviewEl,newReviewEl,buttonResetEl);
 
 bindButtonFormSubmit(formEl);
 
@@ -47,18 +54,32 @@ function findFormSubmit(form){
 }
     
 function findButtonReviw(){
-    return document.querySelector('.reviews__button')
+    return document.querySelector('.reviews__button-submit');
+}
+
+function findButtonReset(){
+    return document.querySelector('.reviews__button-reset');
 }
 
 function findNewReview(){
-    return document.querySelector('.reviews__form-wrapper')
+    return document.querySelector('.reviews__form-wrapper');
 }
 
 function findReviewList(){
-    return document.querySelector('.reviews__listMessages')
+    return document.querySelector('.reviews__listMessages');
 }
 
+function findTotalRatingEl(){
+    return document.getElementById('starsInner');
+}
 
+function findCounter(){
+    return document.querySelector('.card__counter-result');
+}
+
+function findCountText(){
+    return document.querySelector('.card__counter-text');
+}
 
 // Функция увеличения картинки
 function zoomImage(img){
@@ -108,6 +129,10 @@ function bindButtonReview(buttonReview,newReview){
             buttonReview.innerHTML = "Написать Отзыв"
         }
     })
+    // buttonResetEl.addEventListener('click',function(){
+    //     newReview.hidden = !newReview.hidden;
+    //     buttonReview.innerHTML = "Написать Отзыв"
+    // })
 }
 
 //Отправить на Сервер отзыв
@@ -136,18 +161,44 @@ function formatDate(date){
     let day = date.getDate();
     let month = months[date.getMonth()];
     let year = date.getFullYear();
-    return `${day} ${month} ${year}`
+    let hours = date.getHours();
+    let minutes = (date.getMinutes()<10?'0':'') + date.getMinutes();
+    return `${day} ${month} ${year}   ${hours}:${minutes}`
 } 
 
 
 
 
+//Получаем средний рейтинг
+function getTotalRating(arrRating){
+   let sumArr = arrRating.reduce((sum,current) => sum + current,0);
+   let totalNum = sumArr/arrRating.length
+   return +totalNum.toFixed(1);
+}
 
 
+//Публикуем средний рейтинг
+function publishRating(ratingAvarageNumber,ratingEl){
+    let starsTotal = 5;
+    let starPercentage = (ratingAvarageNumber/starsTotal) *100;
+    let starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`
+    ratingEl.style.width = starPercentageRounded;
+}
 
 
+//Публикуем счетчик
 
+function publishCounter(counter,counterEl){
+    counterEl.innerHTML = counter;
+}
 
-
+//Меняем текст "Отзыв" на корректный
+function changeCounterText(counterTextElem,counterEl){
+    if(counterEl.innerHTML == 1 || counterEl.innerHTML == 21 || counterEl.innerHTML == 31 || counterEl.innerHTML == 41 || counterEl.innerHTML == 51){
+        counterTextElem.innerHTML = "Отзыв"
+    }else if(counterEl.innerHTML == 2 || counterEl.innerHTML == 3 || counterEl.innerHTML == 4 || counterEl.innerHTML == 22 || counterEl.innerHTML == 23 || counterEl.innerHTML == 24){
+        counterTextElem.innerHTML = "Отзыва"
+    }
+}
 
     
