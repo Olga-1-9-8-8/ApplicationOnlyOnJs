@@ -19,13 +19,20 @@ let counterEl = findCounter();
 let counterTextEl = findCountText();
 let counter = 0;
 
+let buttonSortData = findButtonSortData();
+let buttonSortRating = findButtonSortData();
+let messagesWrapper = findMessagesWrapper();
+
 zoomImage(imageProductCardEl);
 
 floatingLabelColorChange(inputsFormEl);
 
-bindButtonReview(buttonReviewEl,newReviewEl,buttonResetEl);
+bindButtonReview(buttonReviewEl,newReviewEl,formEl,inputsFormEl);
+
+bindButtonReset(buttonReviewEl,buttonResetEl,newReviewEl,inputsFormEl);
 
 bindButtonFormSubmit(formEl);
+
 
 
 
@@ -54,7 +61,7 @@ function findFormSubmit(form){
 }
     
 function findButtonReviw(){
-    return document.querySelector('.reviews__button-submit');
+    return document.querySelector('.reviews__button');
 }
 
 function findButtonReset(){
@@ -80,6 +87,19 @@ function findCounter(){
 function findCountText(){
     return document.querySelector('.card__counter-text');
 }
+
+function findButtonSortData(){
+    return document.querySelector('.reviews__sortData');
+}
+
+function findButtonSortRating(){
+    return document.querySelector('.reviews__sortRating');
+}
+
+function findMessagesWrapper(){
+    return document.querySelector('.reviews__listMessages');
+}
+
 
 // Функция увеличения картинки
 function zoomImage(img){
@@ -120,20 +140,40 @@ function floatingLabelColorChange(elements){
 
 
 //Закрыть-открыть форму отзыва
-function bindButtonReview(buttonReview,newReview){ 
+function bindButtonReview(buttonReview,newReview,form,inputs){ 
     buttonReview.addEventListener('click',function(){
         newReview.hidden = !newReview.hidden;
-        if(buttonReview.innerHTML =='Написать Отзыв'){
-            buttonReview.innerHTML = "Закрыть Отзыв"
-        } else {
-            buttonReview.innerHTML = "Написать Отзыв"
-        }
+        form.reset();
+        showFloatLabeles(inputs);
+        changeTextInButtonReview(buttonReview);
     })
-    // buttonResetEl.addEventListener('click',function(){
-    //     newReview.hidden = !newReview.hidden;
-    //     buttonReview.innerHTML = "Написать Отзыв"
-    // })
 }
+
+//Функция правильной очистки и закрытия формы
+function bindButtonReset(buttonReview,buttonResetEl,newReview,inputs){
+    buttonResetEl.addEventListener('click',function(){
+        showFloatLabeles(inputs);
+        newReview.hidden = !newReview.hidden;
+        changeTextInButtonReview(buttonReview);
+    })
+}
+
+//Изменить текст на кнопке Отзыва
+function changeTextInButtonReview(buttonReview){
+    if(buttonReview.innerHTML =='Написать Отзыв'){
+        buttonReview.innerHTML = "Закрыть Отзыв"
+    } else {
+        buttonReview.innerHTML = "Написать Отзыв"
+    }
+}
+
+//Показать Float labeles
+function showFloatLabeles(inputs){
+    for(let input of inputs){
+        input.nextElementSibling.style.color = '';
+    }
+}
+
 
 //Отправить на Сервер отзыв
 function bindButtonFormSubmit(form){
@@ -143,6 +183,7 @@ function bindButtonFormSubmit(form){
         let newDate = formatDate(new Date())
         let formData = new FormData(this);
         formData.append('date',newDate);
+        formData.append('dateMillisecondes', Date.now())
         //обязательно писать после адреса до базы, название своей коллекции.json
         let response = await fetch('https://review-app-6ea6e-default-rtdb.firebaseio.com/listEl.json',{
             method:'POST',
@@ -187,7 +228,6 @@ function publishRating(ratingAvarageNumber,ratingEl){
 
 
 //Публикуем счетчик
-
 function publishCounter(counter,counterEl){
     counterEl.innerHTML = counter;
 }
@@ -201,4 +241,18 @@ function changeCounterText(counterTextElem,counterEl){
     }
 }
 
-    
+
+
+function sortMessagesData(button,messagesWrapper){
+    let elemArr = [];
+    let messages = messagesWrapper.children;
+    for(let message of messages){
+        elemArr.push(message)
+    }
+    messages.sort((a, b) => (+a.dataset.sortDate) < (+b.dataset.sortDate)? 1 : -1 )
+    messagesWrapper.innerHTML = "";
+    // elemArr.forEach(item => messagesWrapper.innerHTML += item.value); 
+
+    console.log(messagesWrapper)
+    button.addEventListener('click',()=>{})
+}

@@ -31,7 +31,8 @@ var firebaseConfig = {
         let rating = cards[key].rating;
         let textarea = cards[key].textarea;
         let date = cards[key].date;
-        listEl.innerHTML += createCard(name,surname,rating,textarea,date);
+        let millisecondes = cards[key].dateMillisecondes;
+        listEl.innerHTML += createCard(name,surname,rating,textarea,date,millisecondes);
         arrRating.push(+rating);
         counter++;
      }
@@ -39,14 +40,15 @@ var firebaseConfig = {
     publishRating(totalRating,ratingTotalEl);
     publishCounter(counter,counterEl);  
     changeCounterText(counterTextEl,counterEl);
+    sortMessagesData(buttonSortData,messagesWrapper)
     });
 
 
 
-    function createCard(name,surname,rating,textarea,date){
+    function createCard(name,surname,rating,textarea,date,millisecondes){
        let ratingEl = (rating/5)*100;
        let elem =  `
-       <div class="reviews__listMessage">
+       <div class="reviews__listMessage" data-sort-date ="${millisecondes}">
             <div class="reviews__listMessageTitleWrapper">
                 <i class="fas fa-user-circle fa-3x"></i>
                 <h5 class="reviews__listMessageTitle">${name}  ${surname}</h5>
