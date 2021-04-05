@@ -606,26 +606,6 @@ img{
   display: flex;
 }
 
-.reviews__sortWrapper{
-  margin-right: 10px;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.reviews__sortData{
-  color: #cb11ab;
-  border-bottom: 1px dashed #cb11ab;
-}
-
-.reviews__sortDataArrow{
-  color: #cb11ab;
-}
-
-
-
-
-
-
 
 .reviews__listMessages{
   margin: 20px;

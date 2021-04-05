@@ -36,10 +36,6 @@ bindButtonFormSubmit(formEl);
 
 
 
-
-
-//Функции которые находят элементы на странице
-
 function findImageProductCard(){
     return document.querySelector('.product-card__image');
 }
@@ -101,7 +97,6 @@ function findMessagesWrapper(){
 }
 
 
-// Функция увеличения картинки
 function zoomImage(img){
   
     img.addEventListener('mousemove',function(e){
@@ -125,7 +120,7 @@ function zoomImage(img){
 
 
 
-//Функция изменения цвета лейбла флоата
+//Change input label color
 function floatingLabelColorChange(elements){
     for(let elem of elements){
         elem.onblur = function(){
@@ -139,7 +134,7 @@ function floatingLabelColorChange(elements){
 }
 
 
-//Закрыть-открыть форму отзыва
+// open/close review
 function bindButtonReview(buttonReview,newReview,form,inputs){ 
     buttonReview.addEventListener('click',function(){
         newReview.hidden = !newReview.hidden;
@@ -149,7 +144,7 @@ function bindButtonReview(buttonReview,newReview,form,inputs){
     })
 }
 
-//Функция правильной очистки и закрытия формы
+//clear and close review form
 function bindButtonReset(buttonReview,buttonResetEl,newReview,inputs){
     buttonResetEl.addEventListener('click',function(){
         showFloatLabeles(inputs);
@@ -158,7 +153,7 @@ function bindButtonReset(buttonReview,buttonResetEl,newReview,inputs){
     })
 }
 
-//Изменить текст на кнопке Отзыва
+
 function changeTextInButtonReview(buttonReview){
     if(buttonReview.innerHTML =='Написать Отзыв'){
         buttonReview.innerHTML = "Закрыть Отзыв"
@@ -167,7 +162,7 @@ function changeTextInButtonReview(buttonReview){
     }
 }
 
-//Показать Float labeles
+//Show Float labeles
 function showFloatLabeles(inputs){
     for(let input of inputs){
         input.nextElementSibling.style.color = '';
@@ -175,7 +170,7 @@ function showFloatLabeles(inputs){
 }
 
 
-//Отправить на Сервер отзыв
+//Send review on Server
 function bindButtonFormSubmit(form){
     
     form.addEventListener('submit',async function(event){
@@ -184,7 +179,6 @@ function bindButtonFormSubmit(form){
         let formData = new FormData(this);
         formData.append('date',newDate);
         formData.append('dateMillisecondes', Date.now())
-        //обязательно писать после адреса до базы, название своей коллекции.json
         let response = await fetch('https://review-app-6ea6e-default-rtdb.firebaseio.com/listEl.json',{
             method:'POST',
             body: JSON.stringify(Object.fromEntries(formData))
@@ -196,7 +190,6 @@ function bindButtonFormSubmit(form){
 
 
 
-// Форматируем время
 function formatDate(date){
     let months =["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля","Августа","Сентября","Октября","Ноября","Декабря"];
     let day = date.getDate();
@@ -210,7 +203,6 @@ function formatDate(date){
 
 
 
-//Получаем средний рейтинг
 function getTotalRating(arrRating){
    let sumArr = arrRating.reduce((sum,current) => sum + current,0);
    let totalNum = sumArr/arrRating.length
@@ -218,7 +210,6 @@ function getTotalRating(arrRating){
 }
 
 
-//Публикуем средний рейтинг
 function publishRating(ratingAvarageNumber,ratingEl){
     let starsTotal = 5;
     let starPercentage = (ratingAvarageNumber/starsTotal) *100;
@@ -227,12 +218,11 @@ function publishRating(ratingAvarageNumber,ratingEl){
 }
 
 
-//Публикуем счетчик
 function publishCounter(counter,counterEl){
     counterEl.innerHTML = counter;
 }
 
-//Меняем текст "Отзыв" на корректный
+
 function changeCounterText(counterTextElem,counterEl){
     if(counterEl.innerHTML == 1 || counterEl.innerHTML == 21 || counterEl.innerHTML == 31 || counterEl.innerHTML == 41 || counterEl.innerHTML == 51){
         counterTextElem.innerHTML = "Отзыв"
@@ -242,17 +232,3 @@ function changeCounterText(counterTextElem,counterEl){
 }
 
 
-
-function sortMessagesData(button,messagesWrapper){
-    let elemArr = [];
-    let messages = messagesWrapper.children;
-    for(let message of messages){
-        elemArr.push(message)
-    }
-    messages.sort((a, b) => (+a.dataset.sortDate) < (+b.dataset.sortDate)? 1 : -1 )
-    messagesWrapper.innerHTML = "";
-    // elemArr.forEach(item => messagesWrapper.innerHTML += item.value); 
-
-    console.log(messagesWrapper)
-    button.addEventListener('click',()=>{})
-}
